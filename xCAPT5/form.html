@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>xCAPT5 for Protein-Protein Interaction Prediction</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/all.css">
+  <script src="/css/minmax.js" defer></script>
+  <script src="/css/all.js" defer></script>
+</head>
+
+<body>
+<!--<div id="z_top">-->
+<!--  <a href="https://zhanggroup.org/" id="z_lab_logo"><img alt="Zhang Lab" src="https://zhanggroup.org/image/logo_top.jpg" /></a>-->
+<!--  <a href="http://www.umich.edu" id="z_um_logo"><img alt="University of Michigan" src="https://zhanggroup.org/image/wordmark_m_web.gif" /></a>-->
+<!--</div>-->
+
+<div id="z_body">
+  <div id="z_page">
+    <div style="text-align: center;">
+      <br><img src="logo/PEPPIlogo.png" height=150px alt=""><br>
+    </div><br>
+    <p style="text-align:justify">
+      xCAPT5 is a deep and wide multi-kernel pooling convolutional neural networks with protein language model for protein-protein interaction (PPI)
+      prediction. ...
+      <br><br><b>Note:</b> ...
+    </p>
+    <div style="text-align: center;">
+      <h3>xCAPT5 online Server</h3>
+    </div>
+    <ul>
+      <FORM id="form-main" name="form-main" method="POST">
+        <li> Input your first sequence in <a href=https://seq2fun.dcmb.med.umich.edu/FASTA/>FASTA format</a> here:
+          <a href="javascript:exampleA()">Example input</a><br>
+          <label>
+            <TEXTAREA NAME="sequenceA" ROWS=6 COLS=80 REQUIRED></TEXTAREA>
+          </label>
+          <p>Or upload the sequence from your local computer:<br>
+            <input type="file" name="seq_fileA" size="50"><br>
+          </p>
+        </li>
+        <li> Input your second sequence in <a href=https://seq2fun.dcmb.med.umich.edu/FASTA/>FASTA format</a> here:
+          <a href="javascript:exampleB()">Example input</a><br>
+          <label>
+            <TEXTAREA NAME="sequenceB" ROWS=6 COLS=80 REQUIRED></TEXTAREA>
+          </label>
+          <p>Or upload the sequence from your local computer:<br>
+            <input type="file" name="seq_fileB" size="50"><br>
+          </p>
+        </li>
+        <li> Email: (mandatory, where results will be sent to)<br>
+          <label>
+            <input type="email" name="email" size=30 required>
+          </label><br>
+        </li>
+        <li> ID: (optional, your given name of the protein)<br>
+          <label>
+            <INPUT type="text" name="target" size=30>
+          </label><br>
+          <INPUT TYPE="button" VALUE="Run xCAPT5" id="submit-btn">
+          <INPUT TYPE="reset" VALUE="Clear form">
+        </li>
+      </FORM>
+      <div id="verification-section" style="display: none;">
+        <h3>Verify Your Email</h3>
+        <form id="verify-form" method="post">
+          <label for="verify-code">Enter the verification code sent to your email:</label>
+          <input type="text" id="verify-code" name="code" required>
+          <input type="hidden" id="verify-email" name="email">
+          <button type="button" id="verify-btn">Verify</button>
+        </form>
+      </div>
+    </ul>
+    <br>
+    <hr style="width:30%;text-align:left;margin-left:0">
+    <h3>xCAPT5 Download</h3>
+    <ul>
+      <li>
+        Source code and instructions for installing this program are available on the <a href="https://github.com/aidantee/xCAPT5">xCAPT5 github repository</a>.
+      </li>
+    </ul>
+    <br>
+    <hr style="width:30%;text-align:left;margin-left:0">
+    <h3>Reference:</h3>
+    <ul>
+      <li>
+        Dang, T.H., Vu, T.A. xCAPT5: protein–protein interaction prediction using deep and wide multi-kernel pooling convolutional neural networks with protein language model.
+        BMC Bioinformatics 25, 106 (2024). https://doi.org/10.1186/s12859-024-05725-6
+      </li>
+    </ul>
+  </div>
+</div>
+
+<p></p>
+<p id="z_foot">
+  <a href="mailto:hai.dang@vnu.edu.vn">hai.dang@vnu.edu.vn</a> | AIDANTE Lab | VNU University of Engineering and Technology, Hanoi, Vietnam
+</p><br>
+
+<script type="text/javascript">
+
+function exampleA() {
+    document.FORM1.sequenceA.value = ">A\n" +
+            "MIIIRYLVRETLKSQLAILFILLLIFFCQKLVKILGAAVDGEIPTNLVLSLLGLGIPEMAQLILPLSLFLGLLMTLGKLYTESEITVMHACGLSKAVLVKAAMILALFTGIVAAVNVMWAGPMSSRHQDEVLAEAKANPGMAALAQGQFQQATDGNSVLFIESVDGSKFNDVFLAQLRTKGNARPSVVVADSGQLAQRKDGSQVVTLNKGTRFEGTAMLRDFRITDFQNYQAIIGDPTDTEQMDMRTLWNTDTDRARAEFHWRITLVFTVFMMALIVVPLSVVNPRQGRVLSMLPAMLLYLIYFLLQTSIRSNGAKGKLDPMVWTWFVNSLYILLALGLNLWDTVPVRRI";
+}
+
+function exampleB() {
+    document.FORM1.sequenceB.value = ">B\n" +
+            "GVLDRYIGKTIFTTIMMTLFMLVSLSGIIKFVDQLKKAGQGSYDALGAGMYTLLSVPKDVQIFFPMAALLGALLGLGMLAQRSELVVMQASGFTRLQVALSVMKTAIPLVLLTMAIGEWVAPQGEQMARNYRAQAMYGGSLLSTQQGLWAKDGQNFVYIERVKGDDELGGVSIYAFNDERRLQSVRHASSAKFDPEHKQWRLSQVDESDLTNPKQITGSQTVSGTWKTNLTPDKLGVVALDPDALSISGLHNYVKYLKSSGQDAGRYQLNMWSKIFQPMSVAVMMLMALSFIFGPLRSVPMGVRVVTGISFGFVFYVLDQIFGPLTLVYGIPPIIGALLPSASFLLISLWLLLKR";
+}
+
+const submitBtn = document.getElementById("submit-btn");
+const verifySection = document.getElementById("verification-section");
+const verifyEmailInput = document.getElementById("verify-email");
+const form = document.getElementById("FORM1");
+const verifyForm = document.getElementById("verify-form");
+const verifyBtn = document.getElementById("verify-btn");
+submitBtn.addEventListener("click", async () => {
+    const formData = new FormData(form);
+    const response = await fetch("http://127.0.0.1:8000/submit_form", {
+        method: "POST",
+        body: formData
+    });
+    if (response.ok) {
+        const data = await response.json();
+        verifyEmailInput.value = formData.get("email");
+        form.style.display = "none";
+        verifySection.style.display = "block";
+    } else {
+        const error = await response.json();
+        alert(`Error: ${error.detail}`);
+    }
+});
+
+verifyBtn.addEventListener("click", async () => {
+    const formData = new FormData(verifyForm);
+    const response = await fetch("/verify_code", {
+        method: "POST",
+        body: formData
+    });
+    if (response.ok) {
+        alert("Verification successful. Processing your request now.");
+    } else {
+        const error = await response.json();
+        alert(`Error: ${error.detail}`);
+    }
+});
+
+</script>
+
+</body>
+</html>
