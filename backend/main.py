@@ -1,3 +1,4 @@
+import os
 import random
 
 import smtplib
@@ -19,12 +20,6 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers.
 )
 
-
-# Store verification codes and outputs
-verification_codes = {}
-outputs = {}
-
-
 # Email configuration
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 465
@@ -40,6 +35,20 @@ class SubmitFormData(BaseModel):
     target: str = None
 
 
+def model_predict(sequence_a, sequence_b, output_code):
+    # Create a folder for the output
+    output_folder = f"backend/output/{output_code}"
+    os.makedirs(output_folder, exist_ok=True)
+
+    # Save sequenceA to a file A.seq
+    with open(os.path.join(output_folder, "A.seq"), "w") as file:
+        file.write(sequence_a)
+
+    # Save sequenceB to a file B.seq
+    with open(os.path.join(output_folder, "B.seq"), "w") as file:
+        file.write(sequence_a)
+
+
 @app.post("/submit_form")
 async def submit_form(request: Request):
     try:
@@ -52,9 +61,9 @@ async def submit_form(request: Request):
         if not email or not sequence_a or not sequence_b:
             raise HTTPException(status_code=400, detail="All fields except 'ID' are mandatory.")
 
-        # Generate a verification code
-        verification_code = random.randint(100000, 999999)
-        verification_codes[email] = verification_code
+        # Model predict
+        output_code = f"PPI{random.randint(10000, 99999)}"  # TODO: Check duplicate output code
+        model_predict(sequence_a, sequence_b, output_code)
 
         # Send email
         try:
@@ -65,7 +74,7 @@ async def submit_form(request: Request):
 
             body = (f"Dear user,\n"
                     f"This email confirms that your have submitted A-B to xCAPT5.\n"
-                    f"Your verification code is: {verification_code}. Please enter this code on the website to continue.\n"
+                    f"You can track job status at /output/{output_code}\n"
                     f"\n"
                     f"AIDANTE Lab\n"
                     f"Department of Computational Science and Engineering\n"
@@ -78,53 +87,31 @@ async def submit_form(request: Request):
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Failed to send email: {str(e)}")
 
-        return {"message": "Verification email sent.", "email": email}
+        return {"message": "Job status sent.", "email": email}
 
     except Exception as e:
         raise HTTPException(status_code=422, detail=f"Invalid input: {str(e)}")
 
 
-@app.post("/verify_code")
-async def verify_code(request: Request):
-    form = await request.form()
-    email = form.get("email")
-    code = form.get("code")
-
-    if not email or not code:
-        raise HTTPException(status_code=400, detail="Email and verification code are required.")
-
-    try:
-        code = int(code)  # Convert code to int for validation
-    except ValueError:
-        raise HTTPException(status_code=400, detail="Verification code must be a number.")
-
-    if email not in verification_codes or verification_codes[email] != code:
-        raise HTTPException(status_code=400, detail="Invalid verification code.")
-
-    # Generate unique output code
-    output_code = f"PPI{random.randint(10000, 99999)}"
-    output_info = verification_codes[email]
-    outputs[output_code] = {
-        "sequenceA": output_info["sequenceA"],
-        "sequenceB": output_info["sequenceB"],
-        "result": f"Log(LR) = {round(random.uniform(4.0, 6.0), 3)}\nThe chains are predicted to interact.",
-    }
-
-    # Clear the verification code after successful verification
-    del verification_codes[email]
-    return {"message": "Verification successful.", "output_url": f"/output/{output_code}"}
-
-
 @app.get("/output/{output_code}", response_class=HTMLResponse)
 async def get_output(output_code: str):
-    if output_code not in outputs:
+    # Define the folder path for the output
+    output_folder = f"backend/output/{output_code}"
+
+    # Check if the folder exists
+    if not os.path.exists(output_folder):
         raise HTTPException(status_code=404, detail="Output not found.")
 
-    output_data = outputs[output_code]
-    sequence_a = output_data["sequenceA"]
-    sequence_b = output_data["sequenceB"]
-    result = output_data["result"]
+    # Load sequences from files
+    try:
+        with open(os.path.join(output_folder, "A.seq"), "r") as file_a:
+            sequence_a = file_a.read()
+        with open(os.path.join(output_folder, "B.seq"), "r") as file_b:
+            sequence_b = file_b.read()
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Sequence files not found.")
 
+    # Generate the HTML response
     html_content = f"""
     <html>
         <head>
@@ -132,7 +119,6 @@ async def get_output(output_code: str):
         </head>
         <body>
             <h1>PEPPI Results for {output_code}</h1>
-            <p>{result}</p>
             <h2>Input Sequence in FASTA Format</h2>
             <div>
                 <pre>{sequence_a}</pre>

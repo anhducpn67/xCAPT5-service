@@ -4,8 +4,8 @@
 <head>
   <title>xCAPT5 for Protein-Protein Interaction Prediction</title>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="/css/all.css">
-  <script src="/css/minmax.js" defer></script>
+  <link rel="stylesheet" href="css/all.css">
+  <script src="css/minmax.js" defer></script>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
 <div id="z_body">
   <div id="z_page">
     <div style="text-align: center;">
-      <br><img src="logo/PEPPIlogo.png" height=150px alt=""><br>
+      <br><img src="assets/PEPPIlogo.png" height=150px alt=""><br>
     </div><br>
     <p style="text-align:justify">
       xCAPT5 is a deep and wide multi-kernel pooling convolutional neural networks with protein language model for protein-protein interaction (PPI)
@@ -60,15 +60,7 @@
           <input type="reset" value="Clear form">
         </li>
       </form>
-      <div id="verification-section" style="display: none;">
-        <h3>Verify Your Email</h3>
-        <form id="verify-form" method="post">
-          <label for="verify-code">Enter the verification code sent to your email:</label>
-          <input type="text" id="verify-code" name="code" required>
-          <input type="hidden" id="verify-email" name="email">
-          <button type="button" id="verify-btn">Verify</button>
-        </form>
-      </div>
+      <div id="response-message" style="margin-top: 20px; font-weight: bold; color: green;"></div>
     </ul>
     <br>
     <hr style="width:30%;text-align:left;margin-left:0">
@@ -107,11 +99,7 @@ function exampleB() {
             "GVLDRYIGKTIFTTIMMTLFMLVSLSGIIKFVDQLKKAGQGSYDALGAGMYTLLSVPKDVQIFFPMAALLGALLGLGMLAQRSELVVMQASGFTRLQVALSVMKTAIPLVLLTMAIGEWVAPQGEQMARNYRAQAMYGGSLLSTQQGLWAKDGQNFVYIERVKGDDELGGVSIYAFNDERRLQSVRHASSAKFDPEHKQWRLSQVDESDLTNPKQITGSQTVSGTWKTNLTPDKLGVVALDPDALSISGLHNYVKYLKSSGQDAGRYQLNMWSKIFQPMSVAVMMLMALSFIFGPLRSVPMGVRVVTGISFGFVFYVLDQIFGPLTLVYGIPPIIGALLPSASFLLISLWLLLKR";
 }
 
-const verifySection = document.getElementById("verification-section");
-const verifyEmailInput = document.getElementById("verify-email");
 const form = document.getElementById("form");
-const verifyForm = document.getElementById("verify-form");
-const verifyBtn = document.getElementById("verify-btn");
 
 form.addEventListener("submit", async () => {
     event.preventDefault();
@@ -120,36 +108,16 @@ form.addEventListener("submit", async () => {
         method: "POST",
         body: formData
     });
+
+    const messageDiv = document.getElementById("response-message");
     if (response.ok) {
         const data = await response.json();
-        verifyEmailInput.value = formData.get("email");
-        // form.style.display = "none";
-        verifySection.style.display = "block";
+        messageDiv.style.color = "green";
+        messageDiv.textContent = `Job output is sent to ${formData.get("email")} in about 5 minutes.`;
     } else {
         const error = await response.json();
-        alert(`Error: ${error.detail}`);
-    }
-});
-
-verifyBtn.addEventListener("click", async () => {
-    const formData = new FormData(verifyForm);
-    const response = await fetch("http://127.0.0.1:8000/verify_code", {
-        method: "POST",
-        body: formData
-    });
-    if (response.ok) {
-        const data = await response.json();
-        alert("Verification successful!");
-
-        // Show link to output
-        const resultLink = document.createElement("a");
-        resultLink.href = data.output_url;
-        resultLink.textContent = "View Results";
-        resultLink.target = "_blank";
-        document.body.appendChild(resultLink);
-    } else {
-        const error = await response.json();
-        alert(`Error: ${error.detail}`);
+        messageDiv.style.color = "red";
+        messageDiv.textContent = `Error: ${error.detail}`;
     }
 });
 
