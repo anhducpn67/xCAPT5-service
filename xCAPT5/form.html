@@ -6,7 +6,6 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/css/all.css">
   <script src="/css/minmax.js" defer></script>
-  <script src="/css/all.js" defer></script>
 </head>
 
 <body>
@@ -29,23 +28,23 @@
       <h3>xCAPT5 online Server</h3>
     </div>
     <ul>
-      <FORM id="form-main" name="form-main" method="POST">
+      <form id="form" name="form" method="POST">
         <li> Input your first sequence in <a href=https://seq2fun.dcmb.med.umich.edu/FASTA/>FASTA format</a> here:
           <a href="javascript:exampleA()">Example input</a><br>
           <label>
-            <TEXTAREA NAME="sequenceA" ROWS=6 COLS=80 REQUIRED></TEXTAREA>
+            <textarea name="sequenceA" rows="6" cols="80" required></textarea>
           </label>
           <p>Or upload the sequence from your local computer:<br>
-            <input type="file" name="seq_fileA" size="50"><br>
+            <input type="file" name="sequenceFileA" size="50"><br>
           </p>
         </li>
         <li> Input your second sequence in <a href=https://seq2fun.dcmb.med.umich.edu/FASTA/>FASTA format</a> here:
           <a href="javascript:exampleB()">Example input</a><br>
           <label>
-            <TEXTAREA NAME="sequenceB" ROWS=6 COLS=80 REQUIRED></TEXTAREA>
+            <textarea name="sequenceB" rows="6" cols="80" required></textarea>
           </label>
           <p>Or upload the sequence from your local computer:<br>
-            <input type="file" name="seq_fileB" size="50"><br>
+            <input type="file" name="sequenceFileB" size="50"><br>
           </p>
         </li>
         <li> Email: (mandatory, where results will be sent to)<br>
@@ -55,12 +54,12 @@
         </li>
         <li> ID: (optional, your given name of the protein)<br>
           <label>
-            <INPUT type="text" name="target" size=30>
+            <input type="text" name="target" size=30>
           </label><br>
-          <INPUT TYPE="button" VALUE="Run xCAPT5" id="submit-btn">
-          <INPUT TYPE="reset" VALUE="Clear form">
+          <input type="submit" value="Run xCAPT5" id="submit-btn">
+          <input type="reset" value="Clear form">
         </li>
-      </FORM>
+      </form>
       <div id="verification-section" style="display: none;">
         <h3>Verify Your Email</h3>
         <form id="verify-form" method="post">
@@ -99,22 +98,23 @@
 <script type="text/javascript">
 
 function exampleA() {
-    document.FORM1.sequenceA.value = ">A\n" +
+    document.form.sequenceA.value = ">A\n" +
             "MIIIRYLVRETLKSQLAILFILLLIFFCQKLVKILGAAVDGEIPTNLVLSLLGLGIPEMAQLILPLSLFLGLLMTLGKLYTESEITVMHACGLSKAVLVKAAMILALFTGIVAAVNVMWAGPMSSRHQDEVLAEAKANPGMAALAQGQFQQATDGNSVLFIESVDGSKFNDVFLAQLRTKGNARPSVVVADSGQLAQRKDGSQVVTLNKGTRFEGTAMLRDFRITDFQNYQAIIGDPTDTEQMDMRTLWNTDTDRARAEFHWRITLVFTVFMMALIVVPLSVVNPRQGRVLSMLPAMLLYLIYFLLQTSIRSNGAKGKLDPMVWTWFVNSLYILLALGLNLWDTVPVRRI";
 }
 
 function exampleB() {
-    document.FORM1.sequenceB.value = ">B\n" +
+    document.form.sequenceB.value = ">B\n" +
             "GVLDRYIGKTIFTTIMMTLFMLVSLSGIIKFVDQLKKAGQGSYDALGAGMYTLLSVPKDVQIFFPMAALLGALLGLGMLAQRSELVVMQASGFTRLQVALSVMKTAIPLVLLTMAIGEWVAPQGEQMARNYRAQAMYGGSLLSTQQGLWAKDGQNFVYIERVKGDDELGGVSIYAFNDERRLQSVRHASSAKFDPEHKQWRLSQVDESDLTNPKQITGSQTVSGTWKTNLTPDKLGVVALDPDALSISGLHNYVKYLKSSGQDAGRYQLNMWSKIFQPMSVAVMMLMALSFIFGPLRSVPMGVRVVTGISFGFVFYVLDQIFGPLTLVYGIPPIIGALLPSASFLLISLWLLLKR";
 }
 
-const submitBtn = document.getElementById("submit-btn");
 const verifySection = document.getElementById("verification-section");
 const verifyEmailInput = document.getElementById("verify-email");
-const form = document.getElementById("FORM1");
+const form = document.getElementById("form");
 const verifyForm = document.getElementById("verify-form");
 const verifyBtn = document.getElementById("verify-btn");
-submitBtn.addEventListener("click", async () => {
+
+form.addEventListener("submit", async () => {
+    event.preventDefault();
     const formData = new FormData(form);
     const response = await fetch("http://127.0.0.1:8000/submit_form", {
         method: "POST",
@@ -123,7 +123,7 @@ submitBtn.addEventListener("click", async () => {
     if (response.ok) {
         const data = await response.json();
         verifyEmailInput.value = formData.get("email");
-        form.style.display = "none";
+        // form.style.display = "none";
         verifySection.style.display = "block";
     } else {
         const error = await response.json();
@@ -133,12 +133,20 @@ submitBtn.addEventListener("click", async () => {
 
 verifyBtn.addEventListener("click", async () => {
     const formData = new FormData(verifyForm);
-    const response = await fetch("/verify_code", {
+    const response = await fetch("http://127.0.0.1:8000/verify_code", {
         method: "POST",
         body: formData
     });
     if (response.ok) {
-        alert("Verification successful. Processing your request now.");
+        const data = await response.json();
+        alert("Verification successful!");
+
+        // Show link to output
+        const resultLink = document.createElement("a");
+        resultLink.href = data.output_url;
+        resultLink.textContent = "View Results";
+        resultLink.target = "_blank";
+        document.body.appendChild(resultLink);
     } else {
         const error = await response.json();
         alert(`Error: ${error.detail}`);
