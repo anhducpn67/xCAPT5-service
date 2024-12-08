@@ -95,14 +95,18 @@ async def submit_form(request: Request):
 
 @app.get("/output/{output_code}", response_class=HTMLResponse)
 async def get_output(output_code: str):
-    # Define the folder path for the output
+    print(os.getcwd())
+    # Define the folder path and output.html template
     output_folder = f"backend/output/{output_code}"
+    template_path = "frontend/output.html"
 
-    # Check if the folder exists
+    # Check if the folder and template exist
     if not os.path.exists(output_folder):
-        raise HTTPException(status_code=404, detail="Output not found.")
+        raise HTTPException(status_code=404, detail="Output folder not found.")
+    if not os.path.exists(template_path):
+        raise HTTPException(status_code=500, detail="Template not found.")
 
-    # Load sequences from files
+    # Load sequence A and B from their files
     try:
         with open(os.path.join(output_folder, "A.seq"), "r") as file_a:
             sequence_a = file_a.read()
@@ -111,20 +115,14 @@ async def get_output(output_code: str):
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="Sequence files not found.")
 
-    # Generate the HTML response
-    html_content = f"""
-    <html>
-        <head>
-            <title>Result for {output_code}</title>
-        </head>
-        <body>
-            <h1>PEPPI Results for {output_code}</h1>
-            <h2>Input Sequence in FASTA Format</h2>
-            <div>
-                <pre>{sequence_a}</pre>
-                <pre>{sequence_b}</pre>
-            </div>
-        </body>
-    </html>
-    """
+    # Load the HTML template and replace placeholders
+    with open(template_path, "r") as template_file:
+        html_template = template_file.read()
+
+    # Replace placeholders in the template
+    html_content = html_template.replace("{output_code}", output_code)
+    html_content = html_content.replace("{sequence_a}", sequence_a)
+    html_content = html_content.replace("{sequence_b}", sequence_b)
+
+    # Return the customized HTML response
     return HTMLResponse(content=html_content)
