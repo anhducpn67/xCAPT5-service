@@ -10,18 +10,18 @@
 </head>
 
 <body>
-<span style="font-family: Times New Roman,serif; ">
-[<a href="/xCAPT5">Back to server</a>]
+<span style="font-family: Times New Roman,serif; ">[<a href="/">Back to server</a>]</span>
 <br>
 <h1 align="center">xCAPT5 results for {output_code}</h1>
 <h4 align="center">[Click <a href="result.zip" download>result.zip</a>
     to download all results on this page]</h4>
-<font size="4" face="Arial">
-<h2>log(LR) = 5.543</br>The chains are predicted to interact</h2>
+<span style="font-size: medium; font-family: Arial,serif; ">
+    <h2>log(LR) = 5.543<br>The chains are predicted to interact</h2>
+</span>
 <div style="background:#6599FF;width:500px;"><b><font face="Arial"
 color="#FFFFFF" size=4>&nbsp;Input Sequence in FASTA format</font></b></div>
 <ul>
-    <table style="font-family:Monospace;font-size:14px;background:#F2F2F2;">
+    <table style="font-family:Monospace,serif;font-size:14px;background:#F2F2F2;">
     <tr><td colspan="2">&gt;chain A (350 residues)
     <a href=A.seq>[Download]</a>
     <br>{sequence_a}<br>
@@ -30,367 +30,370 @@ color="#FFFFFF" size=4>&nbsp;Input Sequence in FASTA format</font></b></div>
     <a href=B.seq>[Download]</a>
     <br>{sequence_b}<br>
     </td></tr>
-    </table><br>
+    </table>
+    <br>
 </ul>
 
-<div style="background:#6599FF;width:500px;"><b><font face="Arial"
-color="#FFFFFF" size=4>&nbsp;Top 10 SPRING results</font></b></div>
-<font size=2 face="Times New Roman"><br>
-</font>
-<ul>
-    <table border="0" style="font-size:14px;background:#F2F2F2;">
+<!--<div style="background:#6599FF;width:500px;"><b><font face="Arial"-->
+<!--color="#FFFFFF" size=4>&nbsp;Top 10 SPRING results</font></b></div>-->
+<!--<font size=2 face="Times New Roman"><br>-->
+<!--</font>-->
+<!--<ul>-->
+<!--    <table border="0" style="font-size:14px;background:#F2F2F2;">-->
 
-    <td align ="left">
-    <script type="text/javascript">
-    jmolInitialize("/jmol/");
-    jmolSetAppletColor("#000000");
-    jmolApplet(500,"load Models/model1.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40; spin off;");
-    jmolButton("Reset","Reset");
-    jmolCheckbox("set spin x 10; set spin y 10; spin on",
-        "spin off", "Spin", false);
-    jmolCheckbox("set antialiasDisplay true",
-        "set antialiasDisplay false", "High quality", false);
-    jmolCheckbox("color background white",
-        "color background black", "White background", false);
-    jmolButton("write PNGJ model.png","Save image");
-    </script>
-    </td>
+<!--    <td align ="left">-->
+<!--    <script type="text/javascript">-->
+<!--    jmolInitialize("/jmol/");-->
+<!--    jmolSetAppletColor("#000000");-->
+<!--    jmolApplet(500,"load Models/model1.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40; spin off;");-->
+<!--    jmolButton("Reset","Reset");-->
+<!--    jmolCheckbox("set spin x 10; set spin y 10; spin on",-->
+<!--        "spin off", "Spin", false);-->
+<!--    jmolCheckbox("set antialiasDisplay true",-->
+<!--        "set antialiasDisplay false", "High quality", false);-->
+<!--    jmolCheckbox("color background white",-->
+<!--        "color background black", "White background", false);-->
+<!--    jmolButton("write PNGJ model.png","Save image");-->
+<!--    </script>-->
+<!--    </td>-->
 
-    <td valign="top">
-    <table border="0" style="font-family:Arial;font-size:13px;">
-    <tr bgcolor="#DEDEDE" align="center"><td>Click<br>to view</td>
-    <td>SPRING</br>score<sup>a</sup></td><td>PDB<br>hit</td>
-    <td>BioUnit<sup>b</sup></td><td>Chains<sup>c</sup></td>
-    <td>Query<br>domains<sup>d</sup></td><td>Download</td></tr>
+<!--    <td valign="top">-->
+<!--    <table border="0" style="font-family:Arial;font-size:13px;">-->
+<!--    <tr bgcolor="#DEDEDE" align="center"><td>Click<br>to view</td>-->
+<!--    <td>SPRING</br>score<sup>a</sup></td><td>PDB<br>hit</td>-->
+<!--    <td>BioUnit<sup>b</sup></td><td>Chains<sup>c</sup></td>-->
+<!--    <td>Query<br>domains<sup>d</sup></td><td>Download</td></tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model1.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>51.67</td>
-    <td><a href="https://www.rcsb.org/structure/6MIT" target=_blank>6MIT</a></td>
-    <td>1</td><td>F;G</td><td>1;1</td>
-    <td><a href="Models/model1.pdb" download>model1.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model1.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>51.67</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MIT" target=_blank>6MIT</a></td>-->
+<!--    <td>1</td><td>F;G</td><td>1;1</td>-->
+<!--    <td><a href="Models/model1.pdb" download>model1.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model2.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>48.429</td>
-    <td><a href="https://www.rcsb.org/structure/6MJP" target=_blank>6MJP</a></td>
-    <td>1</td><td>F;G</td><td>1;1</td>
-    <td><a href="Models/model2.pdb" download>model2.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model2.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>48.429</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MJP" target=_blank>6MJP</a></td>-->
+<!--    <td>1</td><td>F;G</td><td>1;1</td>-->
+<!--    <td><a href="Models/model2.pdb" download>model2.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model3.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>48.269</td>
-    <td><a href="https://www.rcsb.org/structure/5X5Y" target=_blank>5X5Y</a></td>
-    <td>1</td><td>F;G</td><td>1;1</td>
-    <td><a href="Models/model3.pdb" download>model3.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model3.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>48.269</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/5X5Y" target=_blank>5X5Y</a></td>-->
+<!--    <td>1</td><td>F;G</td><td>1;1</td>-->
+<!--    <td><a href="Models/model3.pdb" download>model3.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model4.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>46.624</td>
-    <td><a href="https://www.rcsb.org/structure/6MIT" target=_blank>6MIT</a></td>
-    <td>1</td><td>G;F</td><td>1;1</td>
-    <td><a href="Models/model4.pdb" download>model4.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model4.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>46.624</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MIT" target=_blank>6MIT</a></td>-->
+<!--    <td>1</td><td>G;F</td><td>1;1</td>-->
+<!--    <td><a href="Models/model4.pdb" download>model4.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model5.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>45.015</td>
-    <td><a href="https://www.rcsb.org/structure/5X5Y" target=_blank>5X5Y</a></td>
-    <td>1</td><td>G;F</td><td>1;1</td>
-    <td><a href="Models/model5.pdb" download>model5.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model5.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>45.015</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/5X5Y" target=_blank>5X5Y</a></td>-->
+<!--    <td>1</td><td>G;F</td><td>1;1</td>-->
+<!--    <td><a href="Models/model5.pdb" download>model5.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model6.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>44.703</td>
-    <td><a href="https://www.rcsb.org/structure/6MJP" target=_blank>6MJP</a></td>
-    <td>1</td><td>G;F</td><td>1;1</td>
-    <td><a href="Models/model6.pdb" download>model6.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model6.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>44.703</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MJP" target=_blank>6MJP</a></td>-->
+<!--    <td>1</td><td>G;F</td><td>1;1</td>-->
+<!--    <td><a href="Models/model6.pdb" download>model6.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model7.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>43.089</td>
-    <td><a href="https://www.rcsb.org/structure/6MIT" target=_blank>6MIT</a></td>
-    <td>2</td><td>I;J</td><td>1;1</td>
-    <td><a href="Models/model7.pdb" download>model7.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model7.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>43.089</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MIT" target=_blank>6MIT</a></td>-->
+<!--    <td>2</td><td>I;J</td><td>1;1</td>-->
+<!--    <td><a href="Models/model7.pdb" download>model7.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model8.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>39.171</td>
-    <td><a href="https://www.rcsb.org/structure/6MIT" target=_blank>6MIT</a></td>
-    <td>2</td><td>J;I</td><td>1;1</td>
-    <td><a href="Models/model8.pdb" download>model8.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model8.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>39.171</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MIT" target=_blank>6MIT</a></td>-->
+<!--    <td>2</td><td>J;I</td><td>1;1</td>-->
+<!--    <td><a href="Models/model8.pdb" download>model8.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model9.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>31.58</td>
-    <td><a href="https://www.rcsb.org/structure/6MI7" target=_blank>6MI7</a></td>
-    <td>1</td><td>F;G</td><td>1;1</td>
-    <td><a href="Models/model9.pdb" download>model9.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model9.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>31.58</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MI7" target=_blank>6MI7</a></td>-->
+<!--    <td>1</td><td>F;G</td><td>1;1</td>-->
+<!--    <td><a href="Models/model9.pdb" download>model9.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/model10.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>30.301</td>
-    <td><a href="https://www.rcsb.org/structure/6MHZ" target=_blank>6MHZ</a></td>
-    <td>1</td><td>F;G</td><td>1;1</td>
-    <td><a href="Models/model10.pdb" download>model10.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/model10.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>30.301</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MHZ" target=_blank>6MHZ</a></td>-->
+<!--    <td>1</td><td>F;G</td><td>1;1</td>-->
+<!--    <td><a href="Models/model10.pdb" download>model10.pdb</a></td>-->
+<!--    </tr>-->
 
-    </table>
-    <table cellspacing="2" border="0" width="600px" style="font-family:Arial;font-size:12px;"><tr></tr><tr></tr>
-    <tr><td valign="top">(a)</td><td>
-    SPRING score is a scoring function consisting of a weighted sum of the threading Z-score, the model superposition TM-score and the interface energy.
-    </td></tr>
-    <tr><td valign="top">(b)</td><td>
-    <em>BioUnit</em> is the biological assembly (i.e. biounit) number.
-    </td></tr>
-    <tr><td valign="top">(c)</td><td>
-    <em>Chains</em> is the pair of chains in the PDB file that are used as the template, where the first chain corresponds to query chain A.  If the two chains are the same, the template is homodimeric and is constructed of multiple copies of the same chain structure.
-    </td></tr>
-    <tr><td valign="top">(d)</td><td>
-    <em>Query domains</em> is the domain from each respective query sequence that is used in the SPRING model, where the first number corresponds to query chain A.
-    </td></tr>
-    </table>
-    </td>
-    </table>
-</ul>
+<!--    </table>-->
+<!--    <table cellspacing="2" border="0" width="600px" style="font-family:Arial;font-size:12px;"><tr></tr><tr></tr>-->
+<!--    <tr><td valign="top">(a)</td><td>-->
+<!--    SPRING score is a scoring function consisting of a weighted sum of the threading Z-score, the model superposition TM-score and the interface energy.-->
+<!--    </td></tr>-->
+<!--    <tr><td valign="top">(b)</td><td>-->
+<!--    <em>BioUnit</em> is the biological assembly (i.e. biounit) number.-->
+<!--    </td></tr>-->
+<!--    <tr><td valign="top">(c)</td><td>-->
+<!--    <em>Chains</em> is the pair of chains in the PDB file that are used as the template, where the first chain corresponds to query chain A.  If the two chains are the same, the template is homodimeric and is constructed of multiple copies of the same chain structure.-->
+<!--    </td></tr>-->
+<!--    <tr><td valign="top">(d)</td><td>-->
+<!--    <em>Query domains</em> is the domain from each respective query sequence that is used in the SPRING model, where the first number corresponds to query chain A.-->
+<!--    </td></tr>-->
+<!--    </table>-->
+<!--    </td>-->
+<!--    </table>-->
+<!--</ul>-->
 
-<div style="background:#6599FF;width:500px;"><b><font face="Arial"
-color="#FFFFFF" size=4>&nbsp;Top 10 BLAST results</font></b></div>
-<font size=2 face="Times New Roman"><br>
-</font>
-<ul>
-    <table border="0" style="font-size:14px;background:#F2F2F2;">
+<!--<div style="background:#6599FF;width:500px;"><b><font face="Arial"-->
+<!--color="#FFFFFF" size=4>&nbsp;Top 10 BLAST results</font></b></div>-->
+<!--<font size=2 face="Times New Roman"><br>-->
+<!--</font>-->
+<!--<ul>-->
+<!--    <table border="0" style="font-size:14px;background:#F2F2F2;">-->
 
-    <td valign="top">
-    <table border="0" style="font-family:Arial;font-size:13px;">
-    <tr bgcolor="#DEDEDE" align="center">
-    <td> Total SeqID </td>
-    <td> chain A (seqID) <sup>a</sup> </td>
-    <td> chain B (seqID) <sup>b</sup> </td>
-    </tr>
+<!--    <td valign="top">-->
+<!--    <table border="0" style="font-family:Arial;font-size:13px;">-->
+<!--    <tr bgcolor="#DEDEDE" align="center">-->
+<!--    <td> Total SeqID </td>-->
+<!--    <td> chain A (seqID) <sup>a</sup> </td>-->
+<!--    <td> chain B (seqID) <sup>b</sup> </td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>100.0%</td><td>springdb:6MIT01F1 (100.0%)</td><td>springdb:6MIT01G1 (100.0%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>100.0%</td><td>springdb:6MIT01F1 (100.0%)</td><td>springdb:6MIT01G1 (100.0%)</td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>88.9%</td><td>springdb:6MIT02I1 (95.1%)</td><td>springdb:6MIT02J1 (83.4%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>88.9%</td><td>springdb:6MIT02I1 (95.1%)</td><td>springdb:6MIT02J1 (83.4%)</td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>46.6%</td><td>springdb:6MJP01F1 (44.0%)</td><td>springdb:6MJP01G1 (49.6%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>46.6%</td><td>springdb:6MJP01F1 (44.0%)</td><td>springdb:6MJP01G1 (49.6%)</td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>35.9%</td><td>springdb:5X5Y01F1 (33.6%)</td><td>springdb:5X5Y01G1 (38.6%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>35.9%</td><td>springdb:5X5Y01F1 (33.6%)</td><td>springdb:5X5Y01G1 (38.6%)</td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>34.9%</td><td>springdb:6MHZ01F1 (34.0%)</td><td>springdb:6MHZ01G1 (35.8%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>34.9%</td><td>springdb:6MHZ01F1 (34.0%)</td><td>springdb:6MHZ01G1 (35.8%)</td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>32.1%</td><td>springdb:6MI701F1 (36.3%)</td><td>springdb:6MI701G1 (28.7%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>32.1%</td><td>springdb:6MI701F1 (36.3%)</td><td>springdb:6MI701G1 (28.7%)</td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>11.6%</td><td>springdb:5X5Y01G1 (8.3%)</td><td>springdb:5X5Y01F1 (19.7%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>11.6%</td><td>springdb:5X5Y01G1 (8.3%)</td><td>springdb:5X5Y01F1 (19.7%)</td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>10.8%</td><td>springdb:6MIT01G1 (12.4%)</td><td>springdb:6MIT01F1 (9.6%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>10.8%</td><td>springdb:6MIT01G1 (12.4%)</td><td>springdb:6MIT01F1 (9.6%)</td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>10.6%</td><td>springdb:6MIT02J1 (12.3%)</td><td>springdb:6MIT02I1 (9.3%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>10.6%</td><td>springdb:6MIT02J1 (12.3%)</td><td>springdb:6MIT02I1 (9.3%)</td>-->
+<!--    </tr>-->
 
-    <tr align="center">
-    <td>9.4%</td><td>springdb:6MJP01G1 (11.6%)</td><td>springdb:6MJP01F1 (7.9%)</td>
-    </tr>
+<!--    <tr align="center">-->
+<!--    <td>9.4%</td><td>springdb:6MJP01G1 (11.6%)</td><td>springdb:6MJP01F1 (7.9%)</td>-->
+<!--    </tr>-->
 
-    </table>
-    <table cellspacing="2" border="0" width="600px" style="font-family:Arial;font-size:12px;"><tr></tr><tr></tr>
-    <tr><td> </td><td>
-    </td></tr>
-    <tr><td valign="top">(a)</td><td>
-    id-number of chain A in the sequence database, and the percentage sequence identity between query chain and the database hit.
-    </td></tr>
-    <tr><td valign="top">(b)</td><td>
-    id-number of chain B in the sequence database, and the percentage sequence identity between query chain and the database hit.
-    </td></tr>
-    </table>
-    </td>
-    </table>
-</ul>
+<!--    </table>-->
+<!--    <table cellspacing="2" border="0" width="600px" style="font-family:Arial;font-size:12px;"><tr></tr><tr></tr>-->
+<!--    <tr><td> </td><td>-->
+<!--    </td></tr>-->
+<!--    <tr><td valign="top">(a)</td><td>-->
+<!--    id-number of chain A in the sequence database, and the percentage sequence identity between query chain and the database hit.-->
+<!--    </td></tr>-->
+<!--    <tr><td valign="top">(b)</td><td>-->
+<!--    id-number of chain B in the sequence database, and the percentage sequence identity between query chain and the database hit.-->
+<!--    </td></tr>-->
+<!--    </table>-->
+<!--    </td>-->
+<!--    </table>-->
+<!--</ul>-->
 
-<div style="background:#6599FF;width:500px;"><b><font face="Arial"
-color="#FFFFFF" size=4>&nbsp;STRING search results</font></b></div>
-<font size=2 face="Times New Roman"><br>
-</font>
-<ul>
-    <p>The query pair was found in STRING as 640513.Entas_3898-640513.Entas_3897</p>
-<table border="0" style="font-family:Arial;font-size:14px;background:#F2F2F2;"><tr bgcolor="#DEDEDE"><td>STRING feature</td><td>Score</td></tr><tr><td>Gene Neighborhood</td><td>0.887</td></tr>
-<tr><td>Gene Fusion</td><td>0</td></tr>
-<tr><td>Co-occurrence</td><td>0.342</td></tr>
-<tr><td>Co-expression</td><td>0.057</td></tr></table>
+<!--<div style="background:#6599FF;width:500px;"><b><font face="Arial"-->
+<!--color="#FFFFFF" size=4>&nbsp;STRING search results</font></b></div>-->
+<!--<font size=2 face="Times New Roman"><br>-->
+<!--</font>-->
+<!--<ul>-->
+<!--    <p>The query pair was found in STRING as 640513.Entas_3898-640513.Entas_3897</p>-->
+<!--<table border="0" style="font-family:Arial;font-size:14px;background:#F2F2F2;"><tr bgcolor="#DEDEDE"><td>STRING feature</td><td>Score</td></tr><tr><td>Gene Neighborhood</td><td>0.887</td></tr>-->
+<!--<tr><td>Gene Fusion</td><td>0</td></tr>-->
+<!--<tr><td>Co-occurrence</td><td>0.342</td></tr>-->
+<!--<tr><td>Co-expression</td><td>0.057</td></tr></table>-->
 
-</ul>
+<!--</ul>-->
 
-<div style="background:#6599FF;width:500px;"><b><font face="Arial"
-color="#FFFFFF" size=4>&nbsp;CT prediction</font></b></div>
-<font size=2 face="Times New Roman"><br>
-</font>
-<ul>
-    <p>CT predicted probability is 1.000</p>
+<!--<div style="background:#6599FF;width:500px;"><b><font face="Arial"-->
+<!--color="#FFFFFF" size=4>&nbsp;CT prediction</font></b></div>-->
+<!--<font size=2 face="Times New Roman"><br>-->
+<!--</font>-->
+<!--<ul>-->
+<!--    <p>CT predicted probability is 1.000</p>-->
 
-</ul>
+<!--</ul>-->
 
-<div style="background:#6599FF;width:500px;"><b><font face="Arial"
-color="#FFFFFF" size=4>&nbsp;Top 10 SPRINGNEG results</font></b></div>
-<font size=2 face="Times New Roman"><br>
-</font>
-<ul>
-    <table border="0" style="font-size:14px;background:#F2F2F2;">
+<!--<div style="background:#6599FF;width:500px;"><b><font face="Arial"-->
+<!--color="#FFFFFF" size=4>&nbsp;Top 10 SPRINGNEG results</font></b></div>-->
+<!--<font size=2 face="Times New Roman"><br>-->
+<!--</font>-->
+<!--<ul>-->
+<!--    <table border="0" style="font-size:14px;background:#F2F2F2;">-->
 
-    <td align ="left">
-    <script type="text/javascript">
-    jmolInitialize("/jmol/");
-    jmolSetAppletColor("#000000");
-    jmolApplet(500,"load Models/modeln1.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40; spin off;");
-    jmolButton("Reset","Reset");
-    jmolCheckbox("set spin x 10; set spin y 10; spin on",
-        "spin off", "Spin", false);
-    jmolCheckbox("set antialiasDisplay true",
-        "set antialiasDisplay false", "High quality", false);
-    jmolCheckbox("color background white",
-        "color background black", "White background", false);
-    jmolButton("write PNGJ model.png","Save image");
-    </script>
-    </td>
+<!--    <td align ="left">-->
+<!--    <script type="text/javascript">-->
+<!--    jmolInitialize("/jmol/");-->
+<!--    jmolSetAppletColor("#000000");-->
+<!--    jmolApplet(500,"load Models/modeln1.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40; spin off;");-->
+<!--    jmolButton("Reset","Reset");-->
+<!--    jmolCheckbox("set spin x 10; set spin y 10; spin on",-->
+<!--        "spin off", "Spin", false);-->
+<!--    jmolCheckbox("set antialiasDisplay true",-->
+<!--        "set antialiasDisplay false", "High quality", false);-->
+<!--    jmolCheckbox("color background white",-->
+<!--        "color background black", "White background", false);-->
+<!--    jmolButton("write PNGJ model.png","Save image");-->
+<!--    </script>-->
+<!--    </td>-->
 
-    <td valign="top">
-    <table border="0" style="font-family:Arial;font-size:13px;">
-    <tr bgcolor="#DEDEDE" align="center"><td>Click<br>to view</td>
-    <td>SPRING</br>score<sup>a</sup></td><td>PDB<br>hit</td>
-    <td>BioUnit<sup>b</sup></td><td>Chains<sup>c</sup></td>
-    <td>Query<br>domains<sup>d</sup></td><td>Download</td></tr>
+<!--    <td valign="top">-->
+<!--    <table border="0" style="font-family:Arial;font-size:13px;">-->
+<!--    <tr bgcolor="#DEDEDE" align="center"><td>Click<br>to view</td>-->
+<!--    <td>SPRING</br>score<sup>a</sup></td><td>PDB<br>hit</td>-->
+<!--    <td>BioUnit<sup>b</sup></td><td>Chains<sup>c</sup></td>-->
+<!--    <td>Query<br>domains<sup>d</sup></td><td>Download</td></tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln1.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>3.634</td>
-    <td><a href="https://www.rcsb.org/structure/6E1H" target=_blank>6E1H</a></td>
-    <td>1</td><td>B;A</td><td>1;1</td>
-    <td><a href="Models/modeln1.pdb" download>modeln1.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln1.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>3.634</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6E1H" target=_blank>6E1H</a></td>-->
+<!--    <td>1</td><td>B;A</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln1.pdb" download>modeln1.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln2.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>3.457</td>
-    <td><a href="https://www.rcsb.org/structure/6E1H" target=_blank>6E1H</a></td>
-    <td>1</td><td>A;B</td><td>1;1</td>
-    <td><a href="Models/modeln2.pdb" download>modeln2.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln2.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>3.457</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6E1H" target=_blank>6E1H</a></td>-->
+<!--    <td>1</td><td>A;B</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln2.pdb" download>modeln2.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln3.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>2.915</td>
-    <td><a href="https://www.rcsb.org/structure/6HU9" target=_blank>6HU9</a></td>
-    <td>1</td><td>a;C</td><td>1;1</td>
-    <td><a href="Models/modeln3.pdb" download>modeln3.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln3.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>2.915</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6HU9" target=_blank>6HU9</a></td>-->
+<!--    <td>1</td><td>a;C</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln3.pdb" download>modeln3.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln4.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>2.658</td>
-    <td><a href="https://www.rcsb.org/structure/6MMH" target=_blank>6MMH</a></td>
-    <td>1</td><td>A;C</td><td>1;1</td>
-    <td><a href="Models/modeln4.pdb" download>modeln4.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln4.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>2.658</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MMH" target=_blank>6MMH</a></td>-->
+<!--    <td>1</td><td>A;C</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln4.pdb" download>modeln4.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln5.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>2.635</td>
-    <td><a href="https://www.rcsb.org/structure/6MMH" target=_blank>6MMH</a></td>
-    <td>1</td><td>C;A</td><td>1;1</td>
-    <td><a href="Models/modeln5.pdb" download>modeln5.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln5.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>2.635</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6MMH" target=_blank>6MMH</a></td>-->
+<!--    <td>1</td><td>C;A</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln5.pdb" download>modeln5.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln6.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>2.441</td>
-    <td><a href="https://www.rcsb.org/structure/6ADQ" target=_blank>6ADQ</a></td>
-    <td>1</td><td>F;A</td><td>1;1</td>
-    <td><a href="Models/modeln6.pdb" download>modeln6.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln6.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>2.441</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6ADQ" target=_blank>6ADQ</a></td>-->
+<!--    <td>1</td><td>F;A</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln6.pdb" download>modeln6.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln7.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>2.012</td>
-    <td><a href="https://www.rcsb.org/structure/6S7O" target=_blank>6S7O</a></td>
-    <td>1</td><td>A;F</td><td>1;1</td>
-    <td><a href="Models/modeln7.pdb" download>modeln7.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln7.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>2.012</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/6S7O" target=_blank>6S7O</a></td>-->
+<!--    <td>1</td><td>A;F</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln7.pdb" download>modeln7.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln8.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>1.756</td>
-    <td><a href="https://www.rcsb.org/structure/5ABB" target=_blank>5ABB</a></td>
-    <td>1</td><td>Z;B</td><td>1;1</td>
-    <td><a href="Models/modeln8.pdb" download>modeln8.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln8.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>1.756</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/5ABB" target=_blank>5ABB</a></td>-->
+<!--    <td>1</td><td>Z;B</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln8.pdb" download>modeln8.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln9.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>1.659</td>
-    <td><a href="https://www.rcsb.org/structure/2AKI" target=_blank>2AKI</a></td>
-    <td>1</td><td>C;Z</td><td>1;1</td>
-    <td><a href="Models/modeln9.pdb" download>modeln9.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln9.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>1.659</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/2AKI" target=_blank>2AKI</a></td>-->
+<!--    <td>1</td><td>C;Z</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln9.pdb" download>modeln9.pdb</a></td>-->
+<!--    </tr>-->
 
-    <tr align="center"><td><script type="text/javascript">
-    jmolRadio("load Models/modeln10.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);
-    </script></td><td>1.593</td>
-    <td><a href="https://www.rcsb.org/structure/2AKI" target=_blank>2AKI</a></td>
-    <td>1</td><td>Z;C</td><td>1;1</td>
-    <td><a href="Models/modeln10.pdb" download>modeln10.pdb</a></td>
-    </tr>
+<!--    <tr align="center"><td><script type="text/javascript">-->
+<!--    jmolRadio("load Models/modeln10.pdb; select :A; color cyan; select :B; color red; select all; set frank off; calculate structure rama; spacefill off; wireframe off; cartoons; set ambient 40;","",false);-->
+<!--    </script></td><td>1.593</td>-->
+<!--    <td><a href="https://www.rcsb.org/structure/2AKI" target=_blank>2AKI</a></td>-->
+<!--    <td>1</td><td>Z;C</td><td>1;1</td>-->
+<!--    <td><a href="Models/modeln10.pdb" download>modeln10.pdb</a></td>-->
+<!--    </tr>-->
 
-    </table>
-    <table cellspacing="2" border="0" width="600px" style="font-family:Arial;font-size:12px;"><tr></tr><tr></tr>
-    <tr><td valign="top">(a)</td><td>
-    SPRING score is a scoring function consisting of a weighted sum of the threading Z-score, the model superposition TM-score and the interface energy.
-    </td></tr>
-    <tr><td valign="top">(b)</td><td>
-    <em>BioUnit</em> is the biological assembly (i.e. biounit) number.
-    </td></tr>
-    <tr><td valign="top">(c)</td><td>
-    <em>Chains</em> is the pair of chains in the PDB file that are used as the template, where the first chain corresponds to query chain A.  If the two chains are the same, the template is homodimeric and is constructed of multiple copies of the same chain structure.
-    </td></tr>
-    <tr><td valign="top">(d)</td><td>
-    <em>Query domains</em> is the domain from each respective query sequence that is used in the SPRING model, where the first number corresponds to query chain A.
-    </td></tr>
-    </table>
-    </td>
-    </table>
-</ul>
+<!--    </table>-->
+<!--    <table cellspacing="2" border="0" width="600px" style="font-family:Arial;font-size:12px;"><tr></tr><tr></tr>-->
+<!--    <tr><td valign="top">(a)</td><td>-->
+<!--    SPRING score is a scoring function consisting of a weighted sum of the threading Z-score, the model superposition TM-score and the interface energy.-->
+<!--    </td></tr>-->
+<!--    <tr><td valign="top">(b)</td><td>-->
+<!--    <em>BioUnit</em> is the biological assembly (i.e. biounit) number.-->
+<!--    </td></tr>-->
+<!--    <tr><td valign="top">(c)</td><td>-->
+<!--    <em>Chains</em> is the pair of chains in the PDB file that are used as the template, where the first chain corresponds to query chain A.  If the two chains are the same, the template is homodimeric and is constructed of multiple copies of the same chain structure.-->
+<!--    </td></tr>-->
+<!--    <tr><td valign="top">(d)</td><td>-->
+<!--    <em>Query domains</em> is the domain from each respective query sequence that is used in the SPRING model, where the first number corresponds to query chain A.-->
+<!--    </td></tr>-->
+<!--    </table>-->
+<!--    </td>-->
+<!--    </table>-->
+<!--</ul>-->
 
-</font>
-<h4 align="center">[Click <a href="result.zip" download>result.zip</a>
-    to download all results on this page]</h4>
-<hr><br/>
-<div style="position:relative;left:5px;">
-    <table style="font-family:Arial;font-size:14px;">
-    <tr><td colspan=2>References:</td><tr>
-    <tr><td valign="top">1.</td><td>Eric Bell, Jacob Schwartz, Peter Freddolino, Yang Zhang.</td></tr>
-    </table>
-</div><br>
-</body></html>
+<!--</font>-->
+<!--<h4 align="center">[Click <a href="result.zip" download>result.zip</a>-->
+<!--    to download all results on this page]</h4>-->
+<!--<hr><br/>-->
+<!--<div style="position:relative;left:5px;">-->
+<!--    <table style="font-family:Arial;font-size:14px;">-->
+<!--    <tr><td colspan=2>References:</td><tr>-->
+<!--    <tr><td valign="top">1.</td><td>Eric Bell, Jacob Schwartz, Peter Freddolino, Yang Zhang.</td></tr>-->
+<!--    </table>-->
+<!--</div><br>-->
+
+</body>
+</html>

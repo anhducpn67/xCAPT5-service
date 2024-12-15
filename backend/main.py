@@ -6,6 +6,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -126,3 +127,5 @@ async def get_output(output_code: str):
 
     # Return the customized HTML response
     return HTMLResponse(content=html_content)
+
+app.mount("/", StaticFiles(directory="frontend", html=True), name="static")

@@ -104,7 +104,7 @@ const form = document.getElementById("form");
 form.addEventListener("submit", async () => {
     event.preventDefault();
     const formData = new FormData(form);
-    const response = await fetch("http://127.0.0.1:8000/submit_form", {
+    const response = await fetch("/submit_form", {
         method: "POST",
         body: formData
     });
