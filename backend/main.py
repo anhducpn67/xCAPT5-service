@@ -96,7 +96,6 @@ async def submit_form(request: Request):
 
 @app.get("/output/{output_code}", response_class=HTMLResponse)
 async def get_output(output_code: str):
-    print(os.getcwd())
     # Define the folder path and output.html template
     output_folder = f"backend/output/{output_code}"
     template_path = "frontend/output.html"
