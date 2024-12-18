@@ -51,7 +51,7 @@ async def submit_form(request: Request):
 
         # Model predict
         output_code = f"PPI{random.randint(10000, 99999)}"  # TODO: Check duplicate output code
-        result = predict(sequence_a, sequence_b, output_code)
+        prediction = predict(sequence_a, sequence_b, output_code)
 
         # Send email
         try:
@@ -110,6 +110,7 @@ async def get_output(output_code: str):
     html_content = html_template.replace("{output_code}", output_code)
     html_content = html_content.replace("{sequence_a}", sequence_a)
     html_content = html_content.replace("{sequence_b}", sequence_b)
+    # html_content = html_content.replace("{prediction}", sequence_b)
 
     # Return the customized HTML response
     return HTMLResponse(content=html_content)
