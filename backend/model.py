@@ -34,8 +34,8 @@ mixed_precision.set_global_policy('mixed_float16')
 PER_RESIDUE = True
 PER_PROTEIN = False
 SEC_STRUCT = False
-MCAPST5_CHECKPOINT = "mcapst5_pan_epoch_20.hdf5"
-XGBOOST_CHECKPOINT = "xgboost_pan_epoch_20.bin"
+MCAPST5_CHECKPOINT = "backend/mcapst5_pan_epoch_20.hdf5"
+XGBOOST_CHECKPOINT = "backend/xgboost_pan_epoch_20.bin"
 
 BATCH_SIZE = 64
 SEQ_SIZE = 1200
@@ -60,10 +60,11 @@ def get_embeddings(seqs, max_residues=4000, max_seq_len=1000, max_batch=100):
     # if SEC_STRUCT:
     #   sec_struct_model = load_sec_struct_model()
 
-    results = {"residue_embs" : dict(),
-               "protein_embs" : dict(),
-               "sec_structs" : dict()
-               }
+    results = {
+        "residue_embs": dict(),
+        "protein_embs": dict(),
+        "sec_structs": dict(),
+    }
 
     # sort sequences according to length (reduces unnecessary padding --> speeds up embedding)
     seq_dict = sorted(seqs.items(), key=lambda kv: len( seqs[kv[0]] ), reverse=True )
@@ -121,11 +122,24 @@ def pad(rst, length=1200, dim=1024):
     return rst
 
 
-def predict(seq_a: str, seq_b: str):
-    # Load example fasta.
+def predict(sequence_a: str, sequence_b: str, output_code: str):
+    # Create a folder for the output
+    output_folder = f"backend/output/{output_code}"
+    os.makedirs(output_folder, exist_ok=True)
+
+    # Save sequenceA to a file A.seq
+    with open(os.path.join(output_folder, "A.seq"), "w") as file:
+        file.write(sequence_a)
+
+    # Save sequenceB to a file B.seq
+    with open(os.path.join(output_folder, "B.seq"), "w") as file:
+        file.write(sequence_b)
+
+    name_a, sequence_a = sequence_a.split("\r\n")
+    name_b, sequence_b = sequence_b.split("\r\n")
     testing_seqs = {
-        "A": seq_a,
-        "B": seq_b,
+        name_a: sequence_a,
+        name_b: sequence_b,
     }
 
     for id, seq in testing_seqs.items():
@@ -135,17 +149,16 @@ def predict(seq_a: str, seq_b: str):
     # Compute embeddings and/or secondary structure predictions
     embedding_dict = get_embeddings(testing_seqs)
 
-    x1 = pad(embedding_dict["A"])
+    x1 = pad(embedding_dict[name_a])
     x1 = tf.convert_to_tensor(x1, dtype=tf.float16)
     x1.set_shape((SEQ_SIZE, DIM))
 
-    x2 = pad(embedding_dict["B"])
+    x2 = pad(embedding_dict[name_b])
     x2 = tf.convert_to_tensor(x2, dtype=tf.float16)
     x2.set_shape((SEQ_SIZE, DIM))
 
     my_test_dataset = tf.data.Dataset.from_tensors(((x1, x2), tf.constant(0, dtype=tf.float16)))
     my_test_dataset = my_test_dataset.batch(BATCH_SIZE).prefetch(tf.data.AUTOTUNE)
-    list(my_test_dataset)
 
     intermediate_layer_model = Model(inputs=model.input,outputs=model.get_layer(model.layers[-2].name).output)
 
@@ -156,6 +169,6 @@ def predict(seq_a: str, seq_b: str):
     return y_pred
 
 
-print("----------")
-print(predict("MIIIRYLVRETLKSQLAILFILLLIFFCQKLVKILGAAVDGEIPTNLVLSLLGLGIPEMAQLILPLSLFLGLLMTLGKLYTESEITVMHACGLSKAVLVKAAMILALFTGIVAAVNVMWAGPMSSRHQDEVLAEAKANPGMAALAQGQFQQATDGNSVLFIESVDGSKFNDVFLAQLRTKGNARPSVVVADSGQLAQRKDGSQVVTLNKGTRFEGTAMLRDFRITDFQNYQAIIGDPTDTEQMDMRTLWNTDTDRARAEFHWRITLVFTVFMMALIVVPLSVVNPRQGRVLSMLPAMLLYLIYFLLQTSIRSNGAKGKLDPMVWTWFVNSLYILLALGLNLWDTVPVRRI",
-              "GVLDRYIGKTIFTTIMMTLFMLVSLSGIIKFVDQLKKAGQGSYDALGAGMYTLLSVPKDVQIFFPMAALLGALLGLGMLAQRSELVVMQASGFTRLQVALSVMKTAIPLVLLTMAIGEWVAPQGEQMARNYRAQAMYGGSLLSTQQGLWAKDGQNFVYIERVKGDDELGGVSIYAFNDERRLQSVRHASSAKFDPEHKQWRLSQVDESDLTNPKQITGSQTVSGTWKTNLTPDKLGVVALDPDALSISGLHNYVKYLKSSGQDAGRYQLNMWSKIFQPMSVAVMMLMALSFIFGPLRSVPMGVRVVTGISFGFVFYVLDQIFGPLTLVYGIPPIIGALLPSASFLLISLWLLLKR"))
+# print("----------")
+# print(predict("MIIIRYLVRETLKSQLAILFILLLIFFCQKLVKILGAAVDGEIPTNLVLSLLGLGIPEMAQLILPLSLFLGLLMTLGKLYTESEITVMHACGLSKAVLVKAAMILALFTGIVAAVNVMWAGPMSSRHQDEVLAEAKANPGMAALAQGQFQQATDGNSVLFIESVDGSKFNDVFLAQLRTKGNARPSVVVADSGQLAQRKDGSQVVTLNKGTRFEGTAMLRDFRITDFQNYQAIIGDPTDTEQMDMRTLWNTDTDRARAEFHWRITLVFTVFMMALIVVPLSVVNPRQGRVLSMLPAMLLYLIYFLLQTSIRSNGAKGKLDPMVWTWFVNSLYILLALGLNLWDTVPVRRI",
+#               "GVLDRYIGKTIFTTIMMTLFMLVSLSGIIKFVDQLKKAGQGSYDALGAGMYTLLSVPKDVQIFFPMAALLGALLGLGMLAQRSELVVMQASGFTRLQVALSVMKTAIPLVLLTMAIGEWVAPQGEQMARNYRAQAMYGGSLLSTQQGLWAKDGQNFVYIERVKGDDELGGVSIYAFNDERRLQSVRHASSAKFDPEHKQWRLSQVDESDLTNPKQITGSQTVSGTWKTNLTPDKLGVVALDPDALSISGLHNYVKYLKSSGQDAGRYQLNMWSKIFQPMSVAVMMLMALSFIFGPLRSVPMGVRVVTGISFGFVFYVLDQIFGPLTLVYGIPPIIGALLPSASFLLISLWLLLKR"))

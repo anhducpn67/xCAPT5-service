@@ -1,4 +1,3 @@
-import os
 import random
 
 import smtplib
@@ -9,6 +8,8 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
+from backend.model import *
 
 app = FastAPI()
 
@@ -36,20 +37,6 @@ class SubmitFormData(BaseModel):
     target: str = None
 
 
-def model_predict(sequence_a, sequence_b, output_code):
-    # Create a folder for the output
-    output_folder = f"backend/output/{output_code}"
-    os.makedirs(output_folder, exist_ok=True)
-
-    # Save sequenceA to a file A.seq
-    with open(os.path.join(output_folder, "A.seq"), "w") as file:
-        file.write(sequence_a)
-
-    # Save sequenceB to a file B.seq
-    with open(os.path.join(output_folder, "B.seq"), "w") as file:
-        file.write(sequence_a)
-
-
 @app.post("/submit_form")
 async def submit_form(request: Request):
     try:
@@ -64,7 +51,7 @@ async def submit_form(request: Request):
 
         # Model predict
         output_code = f"PPI{random.randint(10000, 99999)}"  # TODO: Check duplicate output code
-        model_predict(sequence_a, sequence_b, output_code)
+        result = predict(sequence_a, sequence_b, output_code)
 
         # Send email
         try:
