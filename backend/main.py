@@ -99,6 +99,8 @@ async def get_output(output_code: str):
             sequence_a = file_a.read()
         with open(os.path.join(output_folder, "B.seq"), "r") as file_b:
             sequence_b = file_b.read()
+        with open(os.path.join(output_folder, "result.txt"), "r") as file_result:
+            prediction = file_result.read()
     except FileNotFoundError:
         raise HTTPException(status_code=404, detail="Sequence files not found.")
 
@@ -110,7 +112,7 @@ async def get_output(output_code: str):
     html_content = html_template.replace("{output_code}", output_code)
     html_content = html_content.replace("{sequence_a}", sequence_a)
     html_content = html_content.replace("{sequence_b}", sequence_b)
-    # html_content = html_content.replace("{prediction}", sequence_b)
+    html_content = html_content.replace("{prediction}", prediction)
 
     # Return the customized HTML response
     return HTMLResponse(content=html_content)

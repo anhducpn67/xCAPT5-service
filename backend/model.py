@@ -123,18 +123,6 @@ def pad(rst, length=1200, dim=1024):
 
 
 def predict(sequence_a: str, sequence_b: str, output_code: str):
-    # Create a folder for the output
-    output_folder = f"backend/output/{output_code}"
-    os.makedirs(output_folder, exist_ok=True)
-
-    # Save sequenceA to a file A.seq
-    with open(os.path.join(output_folder, "A.seq"), "w") as file:
-        file.write(sequence_a)
-
-    # Save sequenceB to a file B.seq
-    with open(os.path.join(output_folder, "B.seq"), "w") as file:
-        file.write(sequence_b)
-
     name_a, sequence_a = sequence_a.split("\r\n")
     name_b, sequence_b = sequence_b.split("\r\n")
     testing_seqs = {
@@ -164,7 +152,26 @@ def predict(sequence_a: str, sequence_b: str, output_code: str):
 
     # Use intermediate layer to transform pairs matrix
     pred = intermediate_layer_model.predict(my_test_dataset)
-    y_pred = model_.predict(pred)
+    y_pred = model_.predict(pred)[0]
 
+    result = "The chains are predicted to interact"
+    if y_pred < 0.5:
+        result = "The chains are predicted to not interact"
+
+    # Create a folder for the output
+    output_folder = f"backend/output/{output_code}"
+    os.makedirs(output_folder, exist_ok=True)
+
+    # Save sequenceA to a file A.seq
+    with open(os.path.join(output_folder, "A.seq"), "w") as file:
+        file.write(sequence_a)
+
+    # Save sequenceB to a file B.seq
+    with open(os.path.join(output_folder, "B.seq"), "w") as file:
+        file.write(sequence_b)
+
+    # Save result to a file result.txt
+    with open(os.path.join(output_folder, "result.txt"), "w") as file:
+        file.write(result)
     return y_pred
 
